@@ -1,0 +1,44 @@
+debugger
+debugger 設置breakpoint(程式運行到此點停下來 提供動作讓你檢查step by step)
+step over 執行程式的下一步
+step into 執行進去函式裡面
+step out 執行完整個函式 跳出來的意思
+watch 可以設置一些變數 或 布林語句 去觀察值的變化
+
+
+
+git
+git remote add origin git@github.com:wueun117/wueun117.git
+加一個遠端連線叫origin=你要放的遠端網址
+git branch -M main
+將目前分支命名為main
+git push -u origin main
+把目前分支push上遠端
+*
+*
+git pull
+把遠端的東西抓下來(用於更新資料
+git clone https://github.com/wueun117/gittest.git
+把遠端的東西抓下來(用於第一次抓資料
+.gitignore
+裡面放不要上傳的檔案名 git時自動忽略
+*
+*
+git add hw1.cpp
+把hw1.cpp加進暫存區
+git commit -m "first commit"
+把暫存區的東西commit 打包起來並附帶一個提交訊息
+git push
+直接push上去
+*
+*
+git branch <Your New Branch>
+新建一個分支
+git checkout <Your New Branch>
+切換到另一個分支上
+git checkout -b <Your New Brach> 
+如果要切換到不存在的分支時，這條指令可以幫你建立你要的分支並且切換過去
+git branch
+查詢你在哪個分支上
+git merge <Your New Branch>
+把新分支結合到此刻的branch
