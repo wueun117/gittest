@@ -10,6 +10,10 @@ while len(text) == 7 :
     next = text[1][12:-1]
     for i in range(2,len(text)):
         temp = text[i].split(", ")
+        if(text[i][:-1]=='\n'):
+            text[i]=text[i]
+        else:
+            text[i]=text[i]+'\n'
         if temp[0] == person:
             print(text[i][:-1])
         elif temp[1] == person:
