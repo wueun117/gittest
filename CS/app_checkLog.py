@@ -10,7 +10,7 @@ while len(text) == 7 :
     next = text[1][12:-1]
     for i in range(2,len(text)):
         temp = text[i].split(", ")
-        if(text[i][:-1]=='\n'):
+        if text[i][-1]=='\n':
             text[i]=text[i]
         else:
             text[i]=text[i]+'\n'
