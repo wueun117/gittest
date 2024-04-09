@@ -10,6 +10,7 @@ class P2PNode:
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) 
         # 設置 IPv4地址（AF_INET）和 UDP協議（SOCK_DGRAM）
         self.sock.bind(('127.0.0.1', self.port)) 
+        self.re = "0"
         # 設置此client節點IP
     
     def start(self, message=None):
@@ -18,16 +19,24 @@ class P2PNode:
             threading.Thread(target=self._send_messages, args=(message,)).start()
     
     def _listen(self):
-        data, addr = self.sock.recvfrom(1024)
-        print(f"Received {data.decode('utf-8')} from {addr}")
-        print('yuyu')
-        #一般的轉帳紀錄
-        # 做transaction 更新本地帳本
-
-
-        # 檢查節點的指令
-        # 大家都做checkAllChains 回傳的sha拿來比較
-        # if一樣 再來做transaction
+        while True:
+            data, addr = self.sock.recvfrom(1024)
+            print(f"Received {data.decode('utf-8')} from {addr}")
+            mess=data.decode('utf-8').split(",")
+            if len(mess) == 3:
+                transaction(data.decode('utf-8'))
+                # 一般的轉帳紀錄 # 做transaction 更新本地帳本
+                print("aaaaa")
+            elif len(mess[0]) >= 20:
+                self.re = data.decode('utf-8')
+                print(self.re)
+                print("bbbbb")
+            else:
+                self._send_messages(checkAllChains(data.decode('utf-8')))
+                # 檢查節點的指令
+                # 大家都做checkAllChains 回傳的sha拿來比較
+                # if一樣 再來做transaction
+                print("ccccc")
     
     def _send_messages(self, message):
         for peer in self.peers:
@@ -52,23 +61,39 @@ if command == "checkLog":
 elif command == "checkMoney":
     checkMoney(input("Who are you: "))
 
-
 #把要加的帳本紀錄傳給大家
 elif command == "transaction":
     record=input("Input the record: ")
     transaction(record)
     node.start(record)
+
 elif command == "checkChain":
     who=input("Who are you: ")
     if print(checkChain(who)) != False:
         node.start("agale, " + who + ", 10")
 
 
+
+##############################################################
+
+
+
 #叫大家去做檢查
 elif command == "checkAllChains":
     who=input("Who are you: ")
-    print(checkAllChains(who))
     node.start("checkAllChains "+who)
+    node.start()
+    print(node.re)
+    if print(checkAllChains(who)+"OUT") == node.re:
+        transaction("angle, " + who + ", 100")
+    print("end")
    
 else:
     print("Do not support")
+
+
+
+
+
+print(node.re)
+
