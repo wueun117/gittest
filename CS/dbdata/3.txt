@@ -1,0 +1,6 @@
+Sha256 of previous block: de572082ea51db906df15832e9d47a15220c24dfe98976c0155cbf984d5e95a9
+Next block: 4.txt
+B, C, 10
+A, B, 20
+A, B, 30angle, C, 10
+angle, A, 10

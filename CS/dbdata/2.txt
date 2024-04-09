@@ -1,0 +1,7 @@
+Sha256 of previous block: 0536769a9f3cbaa495b004244b4d2d50a11e023e17e360f94e708f3ce7bb10be
+Next block: 3.txt
+B, C, 5
+A, B, 20
+A, B, 20
+angle, A, 200
+A, B, 10
