@@ -11,7 +11,7 @@ class P2PNode:
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) 
         # 設置 IPv4地址（AF_INET）和 UDP協議（SOCK_DGRAM）
         self.sock.bind(('172.17.0.5', self.port)) 
-        self.re = ["96dc773c9fd47e5377ccc9ce079f48e1de0922ffd22a2660fad39b8119789829"]
+        self.re = [""]
         # 設置此client節點IP
     
     def start(self, message=None):
